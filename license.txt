@@ -1,0 +1,9 @@
+/*******************************************/
+/****SMART CROPPING AND DOWNSCALING TOOL***/
+
+Version: 1.0.0     2021
+
+
+You have a right to modify this script and use it in your own needs, both personal and commercial use.
+You are free to share this script with others but share a copy of this license too so that others are aware of these terms.
+Selling of this script is not allowed unless authorized by the owner.

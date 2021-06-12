@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>SMART CROPPING TOOL</title>
+<!--CALLING THE SCRIPT-->
+<script src="cropper.js"type="text/javascript"></script>
+
+<style>
+  .b{color:blue;}
+  .d{color:orange;}
+  .btn{border:none; background:blue;color:white; padding:5px;}
+</style>
+</head>
+<body>
+<h2><u>SMART CROPPING & DOWNSCALING TOOL</u></h2><br>
+<a href="license.txt">license</a>
+<br><br>
+Choose an image from files to crop.<br><br>
+ <input type="file"id="file"><br><br>
+ <div id="preview"style="border:1px solid"></div><br><br>
+ <a id="dwn"><button class="btn">Download Photo</button></a><br><br>
+ <p>
+ <h2><u>ABOUT CROPPER;</u></h2>
+ <br><br>
+ Initiate cropping by creating a new SelectImage() object. Example:<br>
+ <b>var crop=new SelectImage(para1,para2,para3);</b>  where para1<br> is the input type="file" element, para2 is a previewing div element and para3 is the height of the final output image e.g 200<br><br>
+ <h2> Functions</h2><br>
+ <b>ResetView(length);</b> >> Used to reset the length of the image that will be output in your previewing div element. Its always a square and only the length is required as the parameter. This does not affect the length of the final image.
+ <br><br><b>DebugCrop();</b> >> Used to monitor errors by the programmer. <br><br><br>
+ <h2>Events</h2><br>
+  <b style="color:green">oncropped event</b> It is on this event the the cropped image is ready and further actions can be done on image like uploading;<br>
+  <u>Example:</u><br>
+  //Assign f the input element, "input type'file' "<br>
+  //<br>
+  <span class="b">var</span> f=<span class="d">document.getElementById</span>("file");<br><br>
+  //Previewing div element<br>
+  <span class="b">var</span> preview=<span class="d">document.getElementById</span>("preview");<br><br>
+  //Set your view as follows<br>
+  //<br>
+  ResetView(300);<br><br>
+  //Actual cropping happens here<br>
+  //<br>
+  <span class="b">var</span> crop=<span class="b">new</span> SelectImage(f,preview,200);<br><br>
+  //Manipulate your cropped image here<br>
+  //width and height are equal because it's a square<br>
+  //<br>
+  <b style="color:brown">crop.oncropped</b>=function (e){<br>
+     <span class="b">var</span> image=e.data;<br>
+      <span class="b">var</span> height=e.data.height;<br>
+       <span class="b">var</span> width=e.data.width;<br>
+  }<br>
+  <br><br>
+ </p>
+ <hr>
+ Success as you do cropping on this tool!<br>
+cool!
+
+<br><br>
+Please leave a reply and comment about your experience with smart cropping tool.
+
+<br>
+
+Thank you!<br><br>
+
+<footer>2021</footer>
+
+<!--MY SCRIPT-->
+<script>
+var a=document.getElementById("dwn");
+var f=document.getElementById("file");
+var div=document.getElementById('preview');
+//create a 'SelectImage()' object with three parameters.
+//the first parameter is the input type=file element.
+//the second parameter is the previewing element, it could be a div.
+//the third one is a scaling value. 250-300 is good
+//Example:
+var crop=new SelectImage(f,div,200);
+//AFTER DECLARING THIS OBJECT, YOU CAN RESET VIEW BY CALLING THE ResetView(length) function
+//BY DEFAULT THE VIEWING CANVAS IS SET TO 250 BY 250
+//DEPENDING ON THE DEVICE SCREEN, YOU CAN RESET THAT VIEW TO FIT YOUR SPECIFICATIONS
+//EXAMPLE: this will output a 300 by 300 view on the screen
+  ResetView(350);
+/*_**********************NB: WHATEVER THE SIZE OF THE VIEW HAS NO EFFECT AND DOES NOT DETERMINE THE SIZE OF THE FINAL IMAGE, 
+        A VIEW IS STRICTLY FOR LETTING  USER HAVE AN IDEA OF WHAT'S HAPPENING BEHIND SCENES************_*/
+
+//ONCE CROPPED, YOU PICK THE CROPED IMAGE USING IN THE 'oncropped' event.
+//THE 'oncropped' event LISTENS TO THE CROPPING PROCESS AND TURNS TRUE WHEN THE CROPPED IMAGE IS READY
+//Example:
+crop.oncropped=function (e){
+	  var image=e.data;
+	  a.href=image.toDataURL("image/jpg");
+	  a.download=Math.random()+".jpg";
+	  //DO WHATEVER YOU WANT WITH THE IMAGE e.g UPLOADING VIA AJAX
+};
+//FOR A PROGRAMMER, USE THE DebugCrop() function TO MONITOR ERRORS.
+//EXAMPLE: 
+DebugCrop();
+
+ </script>
+</body>
+	</html>
