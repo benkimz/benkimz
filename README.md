@@ -1,9 +1,4 @@
-- 👋 Hi, I’m @benkimz, a student and developer
- 
-Thank you for getting to my profile.
-
--I have skills in;
--python, JavaScript, SQL, PHP, HTML, CSS, Ajax
- JSON
-
-Available for web development projects.
+A HTML, JavaScript image cropper and downscaler.
+Simply follow the guide on the index.html and see 
+your cropper working.
+ Get started.
